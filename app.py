@@ -1,7 +1,7 @@
 from flightfinder.app import App
 import sys
-import schedule
-import time
+#import schedule
+#import time
 
 
 def exec():
