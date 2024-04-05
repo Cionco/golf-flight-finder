@@ -16,7 +16,7 @@ class App:
         config = FileReader(filename)
         config.load()
 
-        controller = Controller(config.locations, config.slots)
+        controller = Controller(config.locations, config.slots, config.driver_file)
         times = controller.run(config.date, config.hour)
         print("Free tee times for {} players on day {} after hour {}".format(config.slots, config.date, config.hour))
         for course in times:

@@ -13,13 +13,14 @@ class Controller:
     }
     WEBSITE = "https://www.nexxchange.com/search/teetimes/"
 
-    def __init__(self, locations, slots):
+    def __init__(self, locations, slots, driver_file):
         self.locations = locations
         self.slots = slots
+        self.driver_file = driver_file
         self.result = {}
 
     def run(self, date, hour):
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(self.driver_file)
         params = "?hour={}&date={}".format(hour, date)
 
         for location in self.locations:
