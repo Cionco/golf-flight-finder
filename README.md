@@ -7,3 +7,4 @@
    * Windows (64bit): https://storage.googleapis.com/chrome-for-testing-public/123.0.6312.105/win64/chromedriver-win64.zip
 4. Unpack both zips
 5. Add the driver's path to the config file
+6. Double click Golf Flights.bat on windows. On mac: open terminal in this directory and run this command: python app.py config.txt
