@@ -19,9 +19,9 @@ class Controller:
         self.driver_file = driver_file
         self.result = {}
 
-    def run(self, date, hour):
+    def run(self, date, hour_from, hour_to):
         driver = webdriver.Chrome(self.driver_file)
-        params = "?hour={}&date={}".format(hour, date)
+        params = "?hour={}&date={}".format(hour_from, date)
 
         for location in self.locations:
             link = Controller.WEBSITE + location + params
@@ -33,6 +33,8 @@ class Controller:
             teetime_boxes = driver.find_elements(By.CLASS_NAME, "teetime-box")
             for teetime_box in teetime_boxes:
                 teetime = teetime_box.find_element(By.XPATH, "./div[1]/div[1]/span").get_attribute("innerHTML")
+                if int(teetime.split(":")[0]) >= hour_to:
+                    break
                 courses = teetime_box.find_elements(By.CLASS_NAME, "facet-section")
                 for course_box in courses:
                     course = course_box.find_element(By.XPATH, "./div[1]/div[1]").get_attribute("innerHTML")

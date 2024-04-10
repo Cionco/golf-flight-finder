@@ -17,8 +17,8 @@ class App:
         config.load()
 
         controller = Controller(config.locations, config.slots, config.driver_file)
-        times = controller.run(config.date, config.hour)
-        print("Free tee times for {} players on day {} after hour {}".format(config.slots, config.date, config.hour))
+        times = controller.run(config.date, config.hour_from, config.hour_to)
+        print("Free tee times for {} players on day {} between {} and {} o'clock".format(config.slots, config.date, config.hour_from, config.hour_to))
         for course in times:
             print(course, times[course])
             print()
