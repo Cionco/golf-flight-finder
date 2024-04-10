@@ -5,12 +5,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class Controller:
-    XPATHS = {
-        1: "./div[3]/div[2]/a",
-        2: "./div[3]/div[1]/a",
-        3: "./div[2]/div[2]/a",
-        4: "./div[2]/div[1]/a"
-    }
     WEBSITE = "https://www.nexxchange.com/search/teetimes/"
 
     def __init__(self, locations, slots, driver_file):
@@ -38,9 +32,9 @@ class Controller:
                 courses = teetime_box.find_elements(By.CLASS_NAME, "facet-section")
                 for course_box in courses:
                     course = course_box.find_element(By.XPATH, "./div[1]/div[1]").get_attribute("innerHTML")
-                    free = course_box.find_element(By.XPATH, Controller.XPATHS[self.slots]).get_attribute("class") \
-                           != "show-flight"
-                    if free:
+                    flight_spots = course_box.find_elements(By.XPATH, "./div[position()>1]/div/a[@class='player-box none']")
+
+                    if len(flight_spots) >= self.slots:
                         if location + " " + course not in self.result:
                             self.result[location + " " + course] = []
                         self.result[location + " " + course].append(teetime)
