@@ -1,0 +1,7 @@
+Freie Plätze: 3
+Date: 07.04.2024
+Hour: 10
+chrome_driver: /Users/nicolaskepper/Downloads/chromedriver-mac-x64/chromedriver
+kiawah-golfpark-riedstadt
+golfpark-biblis-wattenheim
+golfresort-gernsheim
